@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Basic TV-Friendly Webpage</title>
+    <style>
+        /* Basic, lightweight CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+        .banner {
+            background-color: #3865ad;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .signout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>Hospital Queue Status</h1>
+    </div>
+
+    <div class="container">
+        <button class="signout-btn" onclick="signOut()">Sign Out</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>SNO</th>
+                    <th>Patient Name</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Doctor Name</th>
+                </tr>
+            </thead>
+            <tbody id="data-table">
+                <!-- Placeholder for dynamic data -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Minimal JavaScript for handling sign out and adding table data
+        const data = [
+            { sno: 1, name: "John Doe", status: "Next", dept: "Cardiology", doctor: "Dr. Smith" },
+            { sno: 2, name: "Jane Doe", status: "In Consultation", dept: "Neurology", doctor: "Dr. Adams" },
+            { sno: 3, name: "Mike Ross", status: "Wait No: 3", dept: "Dermatology", doctor: "Dr. Patel" }
+        ];
+
+        function loadTableData() {
+            const table = document.getElementById('data-table');
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.sno}</td>
+                    <td>${item.name}</td>
+                    <td>${item.status}</td>
+                    <td>${item.dept}</td>
+                    <td>${item.doctor}</td>
+                `;
+                table.appendChild(row);
+            });
+        }
+
+        function signOut() {
+            alert("Signed out! Implement actual sign out logic here.");
+        }
+
+        window.onload = loadTableData;
+    </script>
+</body>
+</html>
